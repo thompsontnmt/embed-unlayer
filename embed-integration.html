@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React Email Editor</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="sc-bcXHqe HvEXH" style="background-color: #4FC1B1;
+    ">
+        <div class="sc-gswNZR jBKZek">
+        
+                <h1 class="h1"
+                >Email Blast Template Builder</h1>
+                <button>Save Design</button>
+                <button>Export HTML</button>
+            
+        </div>
+    </div>
+        <script src="https://editor.unlayer.com/embed.js"></script>
+        <div id="editor" style="height: 900px; width:auto;"></div>
+        <script>
+            unlayer.init({
+                id: 'editor',
+                projectId: 138758,
+                displayMode: 'email'
+            })
+            
+            const editor = unlayer.createEditor({
+                id: 'editor-container',
+                projectId: 1234,
+                displayMode: 'email'
+            })
+            
+            editor.loadDesign({})
+            editor.exportHtml(function(data) { })
+            
+            // var design = {...}; // template JSON
+            // unlayer.loadDesign(design);
+            
+            unlayer.saveDesign(function(design) {
+                console.log('design', design);
+            });
+            
+            unlayer.addEventListener('design:updated', function(updates) {
+                // Design is updated by the user
+                
+                unlayer.exportHtml(function(data) {
+                    var json = data.design; // design json
+                    var html = data.html; // design html
+                    
+                    // Save the json, or html here
+                })
+            })
+            
+            unlayer.exportHtml(function(data) {
+                var json = data.design; // design json
+                var html = data.html; // final html
+                
+                // Do something with the json and html
+            })
+            
+        </script>
+</body>
+</html>
